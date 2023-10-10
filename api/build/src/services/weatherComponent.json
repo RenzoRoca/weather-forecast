@@ -1,0 +1,86 @@
+{
+    "component": "div",
+    "props": {
+        "className": "max-w-md p-8 mx-auto rounded-lg dark:bg-gray-900 dark:text-gray-100",
+        "children": [
+            {
+                "component": "div",
+                "props": {
+                    "className": "flex justify-between space-x-8",
+                    "children": [
+                        {
+                            "component": "div",
+                            "props": {
+                                "className": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "component": "span",
+                                        "props": {
+                                            "className": "font-bold text-8xl",
+                                            "children": {
+                                                "component": "span",
+                                                "props": {
+                                                    "children": "$$$CURRENT_WEATHER_ICON$$$"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "component": "h1",
+                                        "props": {
+                                            "className": "text-xl font-semibold mt-3",
+                                            "children": "$$$CITY$$$"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "component": "span",
+                            "props": {
+                                "className": "font-bold text-8xl",
+                                "children": "$$$CURRENT_TEMPERATURE$$$"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "component": "div",
+                "props": {
+                    "className": "flex justify-between mt-8 space-x-4 dark:text-gray-400",
+                    "children": [
+                        {
+                            "component": "div",
+                            "props": {
+                                "className": "flex flex-col items-center space-y-1",
+                                "children": [
+                                    {
+                                        "component": "span",
+                                        "props": {
+                                            "className": "uppercase",
+                                            "children": "$$$FORECAST_DAY$$$"
+                                        }
+                                    },
+                                    {
+                                        "component": "span",
+                                        "props": {
+                                            "className": "font-bold text-2xl",
+                                            "children": "$$$FORECAST_ICON$$$"
+                                        }
+                                    },
+                                    {
+                                        "component": "span",
+                                        "props": {
+                                            "children": "$$$FORECAST_TEMPERATURE$$$"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
