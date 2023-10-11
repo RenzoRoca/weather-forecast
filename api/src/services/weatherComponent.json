@@ -41,6 +41,33 @@
                   "className": "font-bold text-8xl",
                   "children": "$$$CURRENT_TEMPERATURE$$$"
                 }
+              },
+              {
+                "component": "div",
+                "props": {
+                  "className": "flex flex-col items-center",
+                  "children": [
+                    {
+                      "component": "span",
+                      "props": {
+                        "className": "font-bold text-3xl",
+                        "children": {
+                          "component": "span",
+                          "props": {
+                            "children": "$$$WEATHER_AVG$$$"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "component": "h1",
+                      "props": {
+                        "className": "text-xl font-semibold mt-3",
+                        "children": "$$$CITY$$$"
+                      }
+                    }
+                  ]
+                }
               }
             ]
           }

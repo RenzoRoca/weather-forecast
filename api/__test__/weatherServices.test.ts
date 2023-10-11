@@ -21,6 +21,7 @@ describe('getCitiesWeather', () => {
         expect(entry.current_weather).toHaveProperty('temperature')
         expect(entry.current_weather).toHaveProperty('description')
         expect(entry.forecast).toBeDefined();
+        expect(entry).toHaveProperty('weatherAvg')
         expect(Array.isArray(entry.forecast)).toBe(true)
       });
 
@@ -31,6 +32,7 @@ describe('getCitiesWeather', () => {
           expect(['Madrid', 'Stockholm', 'Tokyo']).toContain(entry.city)
           expect(typeof entry.current_weather.temperature).toBe('number')
           expect(['Sunny', 'Cloudy', 'Rainy', 'Thunderstorm']).toContain(entry.current_weather.description)
+          expect(typeof entry.weatherAvg).toBe('number')
         })
     
       })
