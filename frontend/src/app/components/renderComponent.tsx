@@ -4,6 +4,8 @@ import { getComponent } from '../services/componentService'
 import { WeatherData } from '../types/weatherTypes';
 import { getEmojiForDescription } from '../utils/weatherUtils';
 import { getThreeLetterDay } from '../utils/dateUtils';
+import { replacePlaceholders } from '../utils/renderComponentUtils';
+import RenderForecastItems from './renderForecastItems';
 
 interface ComponentProps {
     component: string;
@@ -12,23 +14,6 @@ interface ComponentProps {
         children?: React.ReactNode;
         [key: string]: any;
     };
-  }
-
-function replacePlaceholders(node: any, data: WeatherData): string {
-    if (typeof node === 'string') {
-        switch (node) {
-            case '$$$CITY$$$':
-                return data?.city || 'Unknown City';
-            case '$$$CURRENT_TEMPERATURE$$$':
-                return `${data?.current_weather?.temperature}°` || 'N/A';
-            case '$$$CURRENT_WEATHER_ICON$$$':
-                return getEmojiForDescription(data?.current_weather?.description) || 'N/A';
-            default:
-                return 'N/A';
-        }
-    }
-    // If node is not a string, array, or object, return it as is
-    return node;
 }
 
 function renderComponentFunc(component: ComponentProps, index: number, data: WeatherData): JSX.Element {
@@ -45,37 +30,13 @@ function renderComponentFunc(component: ComponentProps, index: number, data: Wea
 
     if (props.children === '$$$FORECAST_DAY$$$') {
         // Handle forecast day placeholder by mapping through all forecast entries
-        return (
-            <div key={index}>
-                {data?.forecast?.map(({ date }, forecastIndex) => (
-                    <span key={forecastIndex} className={props.className}>
-                        {getThreeLetterDay(date)}
-                    </span>
-                ))}
-            </div>
-        );
+        return <RenderForecastItems data={data} getValue={(item) => getThreeLetterDay(item.date)} props={props.className} />
     } else if (props.children === '$$$FORECAST_ICON$$$') {
         // Handle forecast icon placeholder
-        return (
-            <div key={index}>
-                {data?.forecast?.map(({ description }, forecastIndex) => (
-                    <span key={forecastIndex} className={props.className}>
-                        {getEmojiForDescription(description)}
-                    </span>
-                ))}
-            </div>
-        );
+        return <RenderForecastItems data={data} getValue={(item) => getEmojiForDescription(item.description)} props={props.className} />
     } else if (props.children === '$$$FORECAST_TEMPERATURE$$$') {
         // Handle forecast temperature placeholder
-        return (
-            <div key={index}>
-                {data?.forecast?.map(({ temperature }, forecastIndex) => (
-                    <span key={forecastIndex}>
-                        {temperature}°
-                    </span>
-                ))}
-            </div>
-        );
+        return <RenderForecastItems data={data} getValue={(item) => `${item.temperature}°`} props={props.className} />;
     }
 
 
