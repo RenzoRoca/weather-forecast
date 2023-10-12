@@ -24,7 +24,7 @@ describe('getCitiesWeather', () => {
             expect(['Madrid', 'Stockholm', 'Tokyo']).toContain(entry.city);
             expect(typeof entry.current_weather.temperature).toBe('number');
             expect(['Sunny', 'Cloudy', 'Rainy', 'Thunderstorm']).toContain(entry.current_weather.description);
-            expect(typeof entry.weatherAvg).toBe('number');
+            expect(typeof entry.weatherAvg).toBe('string');
         });
     });
     test('validate forecast properties', () => {

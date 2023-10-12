@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import RenderComponent from './components/renderComponent'
 import { getWeather } from './services/weatherService'
-import WeatherComponent from './components/weatherComponent'
 import { WeatherData } from './types/weatherTypes'
 
 
